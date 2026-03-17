@@ -1,0 +1,379 @@
+:root {
+    --crab-toolbar-height: clamp(40px, 6vh, 70px);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* toolbar */
+#crab-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--crab-toolbar-height);
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    background: #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.crab-toolbar-section {
+    display: flex;
+    align-items: center;
+}
+
+.crab-toolbar-section.right {
+    margin-left: auto;
+}
+
+#crab-toolbar button {
+    height: 100%;
+    padding: 0 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    color: #808080;
+    cursor: pointer;
+}
+
+#crab-toolbar button:not(:disabled):hover {
+    background: #eeeeee;
+}
+
+#crab-toolbar button:disabled {
+    color: #bababa;
+}
+
+#crab-toolbar i {
+    font-size: 1.4rem;
+}
+
+/* all items side panel */
+#crab-all-items {
+    position: fixed;
+    top: var(--crab-toolbar-height);
+    left: 0;
+    bottom: 0;
+    width: clamp(220px, 22%, 320px);
+    padding: 0.75rem;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    z-index: 900;
+}
+
+#crab-all-items button {
+    width: 100%;
+    margin-bottom: 0.3rem;
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #fafafa;
+    text-align: left;
+    cursor: pointer;
+}
+
+#crab-all-items button:hover {
+    background: #eeeeee;
+}
+
+#crab-all-items button.highlighted {
+    border: 2px solid #beeaf9;
+    background: #3ec0ed;
+    color: white;
+}
+
+#crab-all-items button.highlighted:hover {
+    border: 2px solid #3ec0ed;
+    background: #beeaf9;
+    color: black;
+}
+
+.crab-item-from-all-items-text {
+    white-space: pre-wrap;
+    margin-bottom: 0.15rem;
+}
+
+.crab-item-from-all-items-metadata {
+    font-size: 0.75rem;
+    color: #666666;
+}
+
+/* dialog */
+#crab-dialog {
+    width: min(80%, 700px);
+    max-height: 80vh;
+    padding: 1.5rem;
+    border: none;
+    border-radius: 0.4rem;
+    text-align: left;
+    overflow-y: auto;
+}
+
+#crab-dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.crab-dialog-close {
+    background: none;
+    border: none;
+    padding: 0.2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #808080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crab-dialog-close i {
+    display: block;
+    line-height: 1;
+    transform: translateY(-1px);
+}
+
+.crab-dialog-close:hover {
+    color: #cccccc;
+}
+
+.crab-dialog-close:focus {
+    outline: none;
+}
+
+#crab-dialog::backdrop {
+    background: rgba(0,0,0,0.35);
+}
+
+/* keyboard shortcuts, save */
+.save-buttons {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+}
+
+.shortcut-capture,
+.shortcut-capture-label,
+#save-and-continue,
+#save-and-end {
+    min-width: 2.2rem;
+    max-width: 9rem;
+    padding: 0 0.5rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #fafafa;
+    cursor: pointer;
+}
+
+#save-and-continue,
+#save-and-end {
+    width: auto;
+    padding: 0 0.7rem;
+}
+
+.shortcut-capture,
+.shortcut-capture-label {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: clamp(0.85rem, 0.8vw, 1.2rem);
+}
+
+.shortcut-capture:hover,
+.shortcut-capture-label:hover,
+#save-and-continue:hover,
+#save-and-end:hover {
+    background: #eeeeee;
+}
+
+.shortcut-capture span,
+.shortcut-capture-label span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shortcut-table {
+    border-collapse: separate;
+    border-spacing: 0 0.75rem;
+}
+
+.shortcut-table td,
+.shortcut-table th {
+    padding-right: 5rem;
+}
+
+.shortcut-table th {
+    font-weight: 600;
+}
+
+/* progress */
+#crab-progress-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(40vw, 320px);
+    height: 1.5rem;
+    border: 1px solid #cccccc;
+    border-radius: 0.75rem;
+    background: #fafafa;
+    overflow: hidden;
+}
+
+#crab-progress-container progress {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    accent-color: #3ec0ed;
+}
+
+#crab-progress-container progress::-webkit-progress-bar {
+    background: #fafafa;
+    border-radius: 0.75rem;
+}
+
+#crab-progress-container progress::-webkit-progress-value {
+    background: #3ec0ed;
+    border-radius: 0.75rem;
+}
+
+#crab-progress-container progress::-moz-progress-bar {
+    background: #3ec0ed;
+    border-radius: 0.75rem;
+}
+
+/* colour of progress bar was not correct in some instances of safari
+   until this was added */
+progress[value]::-webkit-progress-value {
+    background-color: #3ec0ed;
+}
+
+#crab-progress-container span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    pointer-events: none;
+}
+
+/* rapid mode */
+.rapid-mode-button.active i {
+    color: #3ec0ed;
+}
+
+/* labels */
+#crab-labels-container {
+    position: fixed;
+    top: calc(var(--crab-toolbar-height) + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    background: white;
+    width: max-content;
+    max-width: 90%;
+    border-radius: 0.6rem;
+    z-index: 950;
+}
+
+.crab-label-button {
+    padding: 0.35rem 0.9rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 999rem;
+    background: #fafafa;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.crab-label-button:hover {
+    background: #eeeeee;
+}
+
+.crab-label-button.is-selected {
+    background: #3ec0ed;
+    border-color: #beeaf9;
+    color: white;
+    font-weight: 600;
+}
+
+.crab-label-button.is-selected:hover {
+    background: #beeaf9;
+    border-color: #3ec0ed;
+}
+
+/* item */
+#crab-item-container {
+    width: 100%;
+    max-width: 80ch;
+    margin: auto;
+}
+
+#crab-item {
+    font-size: 1.2rem;
+    white-space: pre-wrap;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+#crab-metadata {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    color: #666666;
+    opacity: 0.8;
+}
+
+/* save input */
+.name-token-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.name-token-container .row {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.name-token-container label {
+    margin-right: 0.3rem;
+    text-align: right;
+}
+
+.name-token-container input {
+    flex: 1;
+    width: 30rem;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+}
