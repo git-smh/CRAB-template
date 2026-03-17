@@ -14,25 +14,37 @@
 
     const trial = {
       type: jsPsychCrab,
-      <!-- stylesheet: "", -->
+      <!-- stylesheet: "yours-here.css", -->
+      
+      <!-- for multi-label mode, if dataset already comes with labels, they should be in arrays, i.e. "label": [0] -->
       dataset: [
-        {"id": 0, "text": "This is a demo of CRAB.\n\nIMPORTANT: saving to GitHub will not work as no repository has been specified (and you do not have a corresponding access token)."},
-        {"id": 1, "text": "This demo of CRAB is in single-label mode. Rapid mode is available. It is not available in multi-label mode."},
-        {"id": 2, "text": "This item already came with a label assigned.", "label": 0},
-        {"id": 3, "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."},
-        {"id": 4, "text": "Aenean commodo ligula eget dolor. Aenean massa."},
-        {"id": 5, "text": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."},
-        {"id": 6, "text": "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."},
-        {"id": 7, "text": "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo."},
-        {"id": 8, "text": "Nullam dictum felis eu pede mollis pretium."},
-        {"id": 9, "text": "Integer tincidunt."},
-        {"id": 10, "text": "Cras dapibus."},
-        {"id": 10, "text": "Vivamus elementum semper nisi."},
+        {"id": 0, "text": "text 0"},
+        {"id": 1, "text": "test 1", "label": 0},
       ],
-      labels: ["not ironic", "ironic"],
-      guidelines: "Please read and adhere to these guidelines:<ol><li>They can be styled with HTML.</li><li>Aenean vulputate eleifend tellus.</li><li>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</li></ol>",
-      owner: "",
-      repo: "",
+      
+      labels: ["label0", "label1"],
+      
+      <!-- multi_labels: true, -->
+      
+      guidelines: "Please read and adhere to these guidelines:<ol><li>They can be styled with HTML.</li></ol>",
+      
+      <!-- these are the default shortcuts -->
+      <!-- keyboard_shortcuts: {
+        all_items: "a",
+        guidelines: "g",
+        keyboard_shortcuts: "h",
+        rapid_mode: "r",
+        prev: "j",
+        next: "k",
+        save: "s",
+        labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      }, -->
+          
+      owner: "you",
+          
+      repo: "your-repo",
+          
+      <!-- workflow: "yours-here.yml", -->
     };
 
     jsPsych.run([trial]);
