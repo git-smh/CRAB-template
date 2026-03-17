@@ -1,0 +1,84 @@
+name: Save annotations
+
+on:
+  workflow_dispatch:
+    inputs:
+      annotator:
+        description: "Annotator name"
+        required: true
+        type: string
+      dataset:
+        description: "Labelled dataset JSON"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "annotation-bot"
+          git config user.email "annotation-bot@users.noreply.github.com"
+
+      - name: Prepare branch
+        run: |
+          BRANCH="${{ inputs.annotator }}"
+
+          if git show-ref --verify --quiet refs/heads/$BRANCH; then
+            git checkout $BRANCH
+          elif git ls-remote --exit-code --branches origin $BRANCH; then
+            git checkout -b $BRANCH origin/$BRANCH
+          else
+            git checkout -b $BRANCH
+          fi
+          
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+
+      - name: Create timestamped file
+        run: |
+          mkdir -p annotations
+
+          DATE=$(date +'%Y-%m-%d')
+          TIME=$(date +'%H-%M-%S')
+
+          FILE="annotations/${DATE}_${TIME}_${BRANCH}.json"
+          
+          cat <<'EOF' > "$FILE"
+          ${{ inputs.dataset }}
+          EOF
+
+          echo "FILE=$FILE" >> $GITHUB_ENV
+
+      - name: Commit changes
+        run: |
+          git add "$FILE"
+          git commit -m "annotations from ${{ inputs.annotator }} ($FILE)" || echo "No changes"
+
+      - name: Push branch
+        run: |
+          git push origin $BRANCH
+
+      - name: Create pull request if needed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh pr view $BRANCH >/dev/null 2>&1; then
+            echo "PR already exists"
+          else
+            gh pr create \
+              --title "Annotations from ${{ inputs.annotator }}" \
+              --body "Automatic submission from annotation tool." \
+              --base main \
+              --head $BRANCH
+          fi
