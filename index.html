@@ -14,6 +14,8 @@
 
     const trial = {
       type: jsPsychCrab,
+      
+      <!-- (optional) -->
       <!-- stylesheet: "yours-here.css", -->
       
       <!-- for multi-label mode, if dataset already comes with labels, they should be in arrays, i.e. "label": [0] -->
@@ -23,27 +25,30 @@
       ],
       
       labels: ["label0", "label1"],
-      
+
+      <!-- (optional, false by default) -->
       <!-- multi_labels: true, -->
+
+      <!-- (optional) -->
+      <!-- guidelines: "Please read and adhere to these guidelines:<ol><li>They can be styled with HTML.</li></ol>", -->
       
-      guidelines: "Please read and adhere to these guidelines:<ol><li>They can be styled with HTML.</li></ol>",
-      
-      <!-- these are the default shortcuts -->
+      <!-- (optional) -->
       <!-- keyboard_shortcuts: {
-        all_items: "a",
-        guidelines: "g",
-        keyboard_shortcuts: "h",
-        rapid_mode: "r",
-        prev: "j",
-        next: "k",
-        save: "s",
-        labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+        all_items: "",
+        guidelines: "",
+        keyboard_shortcuts: "",
+        rapid_mode: "",
+        prev: "",
+        next: "",
+        save: "",
+        labels: ["", "", ...],
       }, -->
           
       owner: "you",
           
       repo: "your-repo",
-          
+
+      <!-- (optional) -->    
       <!-- workflow: "yours-here.yml", -->
     };
 
