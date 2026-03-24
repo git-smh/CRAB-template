@@ -9,7 +9,7 @@
 `index.html` (contains your CRAB instantiation)
 
 ## Setup
-1. use this template - if hosting on GitHub Pages, put it in a repository and call it `<yourUsername>.github.io`
+1. use this template - if hosting on GitHub Pages, put it in a repository and call it `<yourUsername>.github.io`.
 2. modify `index.html` - add your dataset etc. Refer to the comments in the file and the [documentation](https://github.com/smhancode/jsPsych.git/tree/main/packages/plugin-crab/docs/crab-docs.md).
 3. create repository-scoped access token with these permissions: read access to repository metadata, and read and write access to GitHub Actions.
 
