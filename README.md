@@ -3,24 +3,15 @@
 ## Structure
 
 `.github/workflows/` (folders, contain GitHub Actions workflow file)
+
 `jspsych/` (folder, contains CRAB and jsPsych code and css)
+
 `index.html` (contains your CRAB instantiation)
 
 ## Setup
 1. use this template - if hosting on GitHub Pages, put it in a repository and call it `<yourUsername>.github.io`
-2. modify `index.html` - add your dataset etc.
-
-| Parameter          | Type                  | Default Value        | Description                                                                                                              |
-|--------------------|-----------------------|----------------------|--------------------------------------------------------------------------------------------------------------------------|
-| stylesheet         | string                | "jspsych/crab.css"   | stylesheet for styling the GUI. Use default stylesheet, modify it, or provide your own stylesheet.                       |
-| dataset            | array of JSON objects | undefined            | the dataset to annotate, which can already have labels, e.g. `[{"id": 0, "text": "text 0", "label": 0}]`.                |
-| labels             | array of strings      | undefined            | The labels to label the dataset with, e.g. `["label0", "label1"]`.                                                       |
-| multi_labels       | boolean               | false                | Whether data can be annotated with multiple labels.                                                                      |
-| guidelines         | HTML string           | "No guidelines."     | Annotation guidelines for annotators.                                                                                    |
-| keyboard_shortcuts | JSON object           | see below            | Keyboard shortcuts.                                                                                                      |
-| owner              | string                | undefined            | Username of the GitHub account which owns the repository.                                                                |
-| repo               | string                | undefined            | Name of the GitHub repository to save annotations to.                                                                    |
-| workflow           | string                | save-annotations.yml | Name of the GitHub Actions file, which does the saving to GitHub. Use default file, modify it, or provide your own file. |
+2. modify `index.html` - add your dataset etc. Refer to the comments in the file and the [documentation](https://github.com/smhancode/jsPsych.git/tree/main/packages/plugin-crab/docs/crab-docs.md).
+3. create repository-scoped access token with these permissions: read access to repository metadata, and read and write access to GitHub Actions.
 
 ## Example
 
