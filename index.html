@@ -15,25 +15,27 @@
     const trial = {
       type: jsPsychCrab,
       
-      // (optional)
+      // (optional):
       // stylesheet: "yours-here.css",
       
-      <!-- for multi-label mode, if dataset already comes with labels, they should be in arrays, i.e. "label": [0] -->
+      // (for multi-label mode, if dataset already comes with labels, they should be in arrays, i.e. "label": [0])
+      // replace example dataset with yours
       dataset: [
-        {"id": 0, "text": "text 0"},
-        {"id": 1, "text": "text 1", "label": 0},
+        {"id": 0, "text": "Hello!"},
+        {"id": 1, "text": "Bye.", "label": 0},
       ],
       
       labels: ["label0", "label1"],
 
-      // (optional, false by default)
+      // (optional, false by default):
       // multi_labels: true,
 
-      // (optional)
+      // (optional):
       // guidelines: "Please read and adhere to these guidelines:<ol><li>They can be styled with HTML.</li></ol>",
       
-      // (optional)
-      /* keyboard_shortcuts: {
+      // (optional):
+      /*
+      keyboard_shortcuts: {
         all_items: "",
         guidelines: "",
         keyboard_shortcuts: "",
@@ -42,13 +44,14 @@
         next: "",
         save: "",
         labels: ["", "", ...],
-      }, */
+      },
+      */
           
-      owner: "you",
+      owner: "yourUsername",
           
-      repo: "your-repo",
+      repo: "yourRepoName",
 
-      // (optional) 
+      // (optional):
       // workflow: "yours-here.yml",
     };
 
