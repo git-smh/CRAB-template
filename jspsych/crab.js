@@ -641,6 +641,13 @@ var jsPsychCrab = (function (jspsych) {
         progressBar.value = numLabelledItems;
         progressText.textContent = `${numLabelledItems} of ${annotatedDataset.length} annotated`;
         itemButtons.forEach((itemButton, itemButtonIdx) => {
+          const item2 = annotatedDataset[itemButtonIdx];
+          const metadata = itemButton.querySelector(
+            ".crab-item-from-all-items-metadata"
+          );
+          if (metadata) {
+            metadata.textContent = makeMetadataString(item2, itemButtonIdx, annotatedDataset.length);
+          }
           if (itemButtonIdx === curIdx) {
             itemButton.classList.add("highlighted");
             itemButton.disabled = true;
